@@ -15,13 +15,21 @@ public class AccountMain {
 	}
 
 	public void accountDebit() {
+
 		System.out.print("Enter debit Amount from the account: ");
 		balance.setDebitBalance(s.nextDouble());
-		totalAccountBalance = balance.getAccountBalance() - balance.getDebitBalance();
-		System.out.println("After debit the avaliable ammount is : " + totalAccountBalance);
+
+		if (balance.getAccountBalance() < balance.getDebitBalance()) {
+			System.out.println("Invalid amount please enter correct amount");
+		} else {
+			totalAccountBalance = balance.getAccountBalance() - balance.getDebitBalance();
+			System.out.println("After withdrawing "+totalAccountBalance);
+		}
+
 	}
 
 	public void accountCridit() {
+
 		System.out.print("Enter Cridite Amount : ");
 		balance.setCreditBalance(s.nextDouble());
 		totalAccountBalance = totalAccountBalance + balance.getCreditBalance();
@@ -29,6 +37,7 @@ public class AccountMain {
 	}
 
 	public static void main(String[] args) {
+
 		AccountMain account = new AccountMain();
 		account.accountDetaild();
 		Scanner s = new Scanner(System.in);
